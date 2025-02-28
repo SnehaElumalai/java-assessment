@@ -1,0 +1,16 @@
+public class ThirdMaxIn2DArray {
+    public static void main(String[] args) {
+        int[][] array = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE, third = Integer.MIN_VALUE;
+
+        for (int[] row : array) {
+            for (int num : row) {
+                if (num > first) { third = second; second = first; first = num; }
+                else if (num > second && num != first) { third = second; second = num; }
+                else if (num > third && num != second && num != first) { third = num; }
+            }
+        }
+
+        System.out.println(third != Integer.MIN_VALUE ? "Third maximum: " + third : "No third maximum found.");
+    }
+}
