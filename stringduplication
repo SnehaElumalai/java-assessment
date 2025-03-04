@@ -1,0 +1,23 @@
+public class StringTransformer {
+    public static void main(String[] args) {
+        String input = "t6hj7ui";
+        System.out.println(transform(input));
+    }
+
+    static String transform(String str) {
+        String result = "";
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isDigit(ch)) {
+                int repeat = ch - '0'; // Convert digit to integer (e.g., '6' -> 6)
+                char prevChar = result.charAt(result.length() - 1); // Get the last character
+                for (int j = 1; j < repeat; j++) { // Repeat (repeat - 1) times
+                    result += prevChar;
+                }
+            } else {
+                result += ch; // Append non-digit characters
+            }
+        }
+        return result;
+    }
+}
